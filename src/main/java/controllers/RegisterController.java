@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import service.Ingredient;
-import service.Manager;
 import service.Participant;
 import service.Tech;
 import java.util.Arrays;
@@ -27,14 +26,36 @@ public class RegisterController implements Statics{
     @FXML
     public void registerButton() {
         createParticipant();
-        clearRegisterFields();
     }
 
     private void createParticipant() {
+        if(validateFields()) {
+            fair.getParticipants().add(new Participant(name.getText(), surname.getText(), dishname.getText(), getIngredients()));
+            messageValue.setText("Successfully registered");
+            clearRegisterFields();
+        }
+    }
 
-        fair.getParticipants().add(new Participant(name.getText(), surname.getText(), dishname.getText(), getIngredients()));
-        messageValue.setText("Successfully registered");
+    private boolean validateFields() {
+        return validateEmptiness() && validateDish();
+    }
 
+    private boolean validateDish() {
+        if(fair.validateDish(dishname.getText())){
+            messageValue.setText("This dish has been already registered");
+            return false;
+        }
+        return true;
+    }
+
+
+    private boolean validateEmptiness() {
+        if (name.getText().isEmpty() || surname.getText().isEmpty() ||
+                dishname.getText().isEmpty() || ingredients.getText().isEmpty()){
+            messageValue.setText("Empty fields are not allowed");
+            return false;
+        }
+        return true;
     }
 
     private Set<Ingredient> getIngredients() {
@@ -50,13 +71,13 @@ public class RegisterController implements Statics{
     }
 
     private String [] ingredientsToArray() {
-        String in = ingredients.getText().replaceAll(" ", "");
+        String in = ingredients.getText().trim();
         return in.split(",");
     }
 
     private Ingredient createNewIngredient(String s) {
-        String a = s.substring(0, s.indexOf("("));
-        String b = s.substring(s.indexOf("(")+1, s.indexOf(")"));
+        String a = s.substring(0, s.indexOf("(")).trim();
+        String b = s.substring(s.indexOf("(")+1, s.indexOf(")")).trim();
         return new Ingredient(a, Double.parseDouble(b), Tech.getRandomDouble(1.0, 100.0));
     }
 

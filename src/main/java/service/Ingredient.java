@@ -4,13 +4,9 @@ public class Ingredient {
 
     private final String name;
 
-    private double amount;
+    private final double amount;
 
-    private double price;
-
-    public Ingredient(String name) {
-        this.name = name;
-    }
+    private final double price;
 
     public Ingredient(String name, double amount, double price) {
         this.name = name;
@@ -24,11 +20,7 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return "Ingredient{" +
-                "name='" + name + '\'' +
-                ", amount=" + amount +
-                ", price=" + price +
-                '}';
+        return name + " (amount: " + amount + ", price: " + price + ")";
     }
 
 //    @Override

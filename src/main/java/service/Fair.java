@@ -21,15 +21,27 @@ public class Fair implements Manager{
         return participants;
     }
 
+    /*
+    * Returns true if any Participant object from 'participants' field collection has 'dish' field with Dish object that
+    * has field 'name' equal to @param String 'dishname'
+    */
     public boolean validateDish(String dishname) {
         return participants.stream().anyMatch(p -> p.getDish().name().equals(dishname));
     }
 
+    /*
+    * Fills collection 'ingredientsList' implemented from Manager interface with Ingredient objects from
+    * 'recipe' field of Dish object from 'dish' field of each Participant object in 'participants' collection
+    */
     @Override
     public void collectIngredients() {
         participants.forEach( p -> ingredientsList.addAll(p.getDish().recipe()));
     }
 
+    /*
+    * Sums up all values of 'price' field of Ingredient objects from 'ingredientsList' collection.
+    * sum is deducted from 'totalBalance' field of Fair object.
+    */
     @Override
     public void buyIngredients(){
         collectIngredients();
@@ -37,6 +49,12 @@ public class Fair implements Manager{
         totalBalance = totalBalance - sum;
     }
 
+    /*
+    * Gets Ingredient objects from 'ingredientsList' collection if they are contained in 'recipe' field of 'dish' field of
+    * Participant object from 'participants' collection.
+    * Adds these Ingredient objects into 'requestedIngredients' collection of Participant object
+    * Removes these Ingredient objects from ingredientList collection.
+    */
     @Override
     public void divideIngredients(){
 

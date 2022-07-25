@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Tech {
 
-
     /**
      * Updating Stage of the current Window with the new Scene object.
      * @param application URL value of the requested view page.

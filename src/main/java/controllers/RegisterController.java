@@ -42,7 +42,6 @@ public class RegisterController implements Statics{
      * Successful message is printed only in case of exceptions absence.
      */
     private void createParticipant() {
-
         try{
             validateFields();
             fair.getParticipants().add(new Participant(name.getText(), surname.getText(), dishname.getText(), getIngredients()));
@@ -55,7 +54,6 @@ public class RegisterController implements Statics{
             clearRegisterFields();
         }
     }
-
 
     /**
      * Gets ingredients from String value in 'ingredients' Label field, created by toAddIngredient() method.

@@ -1,0 +1,11 @@
+.h1-title, .h3-title, .text-style  {
+    -fx-padding: 0px 0 10px 0;
+}
+
+.small-text-style {
+    -fx-padding: 0px 0 5px 0;
+}
+
+.main-grid-pane{
+    -fx-padding: 10px;
+}

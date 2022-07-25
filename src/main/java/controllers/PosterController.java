@@ -39,9 +39,9 @@ public class PosterController implements Statics{
 
         GridPane gp = new GridPane();
         Label name = new Label(p.getName());
-        name.setFont(new Font("Serif", 14));
+        name.setFont(new Font("Serif", 15));
         Label surname = new Label(p.getSurname());
-        surname.setFont(new Font("Serif", 14));
+        surname.setFont(new Font("Serif", 15));
         Label dish = new Label(p.getDish().name());
         dish.setFont(new Font("Serif", 12));
 
@@ -50,10 +50,8 @@ public class PosterController implements Statics{
         gp.add(dish, 0, 2);
 
         gp.setAlignment(Pos.TOP_LEFT);
-        gp.setHgap(5.0);
-        gp.setVgap(5.0);
-
-
+        gp.setHgap(2.0);
+        gp.setVgap(2.0);
 
         return gp;
     }

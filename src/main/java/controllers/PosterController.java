@@ -10,15 +10,18 @@ public class PosterController implements Statics{
 
     public GridPane participants;
 
+    /**
+     * Calls uploadParticipants() method and prints Fair object information into the console.
+     */
     public void initialize(){
         uploadParticipants();
         System.out.println(fair);
     }
 
-    /*
-    * Adds new Node elements created by addRecord() method with data of each Participant object from
-    * 'participants' field collection of Fair object implemented from Statics interface.
-    */
+    /**
+     * Adds into 'participants' GridPane a new Node elements created by addRecord() method with data of each Participant object from
+     * 'participants' field collection of Fair object implemented from Statics interface.
+     */
     private void uploadParticipants() {
         for (Participant p : fair.getParticipants()) {
             participants.add(addRecord(p), 0, participants.getRowCount()+1);
@@ -26,10 +29,12 @@ public class PosterController implements Statics{
         }
     }
 
-    /*
-    * Creates new GridPane Node with data from field of Participant @param 'p'
-    * Returns created Node element
-    */
+    /**
+     * Creates new GridPane Node with data from fields of Participant @param 'p'.
+     *
+     * @param p Participant object sent from 'participants' collection field of Fair object.
+     * @return created Node GridPane element.
+     */
     private GridPane addRecord(Participant p){
 
         GridPane gp = new GridPane();

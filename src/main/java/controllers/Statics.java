@@ -1,5 +1,4 @@
 package controllers;
-
 import service.Fair;
 
 public interface Statics {

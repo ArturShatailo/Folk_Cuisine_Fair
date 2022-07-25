@@ -10,13 +10,14 @@ import java.util.Scanner;
 public class Tech {
 
 
-    /*
+    /**
      * Updating Stage of the current Window with the new Scene object.
-     * URL and title values are received from @param 'application' and @param 'title'.
-     * New Stage object is received from @param 'stage'
+     * @param application URL value of the requested view page.
+     * @param title String value of title of further opened page.
+     * @param stage Stage object received from the current Window.
      * @param x is width
      * @param y is height
-     */
+     **/
     public static void nextWindow(URL application, String title, Stage stage, int x, int y){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(application);
